@@ -1,14 +1,15 @@
 'use strict';
 
-console.log('Hello from nomopromo! Removing pesky Youtube Premieres...');
+console.log('nomopromo is removing non-video cards...');
 
-var withButton = '//yt-formatted-string[contains(text(),"Set reminder")]';
-var wbParents = 5;
-var withText = '//span[contains(text(),"Premiere")]';
-var wtParents = 6;
+var premiereWithButton = '//yt-formatted-string[contains(text(),"Set reminder")]';
+var pwbParents = 5;
+var premiereWithText = '//span[contains(text(),"Premiere")]';
+var pwtParents = 6;
 
-tryRemoveCards(withButton, wbParents);
-tryRemoveCards(withText, wtParents);
+
+tryRemoveCards(premiereWithButton, pwbParents);
+tryRemoveCards(premiereWithText, pwtParents);
 
 function tryRemoveCards(xpath, numParents) {
     var stop = false;
@@ -29,7 +30,7 @@ function tryRemoveCards(xpath, numParents) {
 
 function removeParentAtNum(element, num, stopAt) {
     if (num == stopAt + 1) {
-        console.log('Killng a Youtube premiere result.');
+        console.log('Killng a Youtube non-video card.');
         element.remove();
         return; 
     } else {
